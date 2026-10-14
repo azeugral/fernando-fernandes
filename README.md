@@ -1,4 +1,4 @@
-# Fernando Fernandes · Tattoo / Art / Culture
+# Fernando Fernandes · Tatuador premiado
 
 Site de apresentação do tatuador **Fernando Fernandes** (@fernandofernandestattoo), preto e cinza / blackwork, Bom Retiro, São Paulo.
 
@@ -27,9 +27,8 @@ Páginas: `index.html`, `portfolio.html` (72 obras), `404.html`.
 2. **Horário de atendimento**: o site diz só "com hora marcada".
 3. **Fechamento de braço em uma sessão por R$ 1.300**: veio de um post. Continua valendo? (Antes houve uma campanha de R$ 999.)
 4. **Matéria do g1 (2023)**: o tatuador da reportagem tinha estúdio em Praia Grande. É ele mesmo? O Facebook dele também cita Praia Grande.
-5. **Entrevista**: as respostas foram montadas a partir das legendas dele. Ele precisa ler e aprovar.
-6. **Foto "do outro lado"** (post do TBT premiando): confirmar que é ele na foto e qual evento foi.
-7. **Mentoria e aulas de preto e cinza**: seguem abertas? Tem valor ou página própria?
-8. **Classificados**: gravura no vidro, móveis e artes disponíveis estão à venda de verdade?
-9. Logo: ele não tem logo além do nome na capa. O monograma "FF" do favicon foi feito para o site.
-10. Domínio e remoção do `noindex` quando for ao ar.
+5. **Textos do Sobre e do Processo**: foram montados a partir das legendas dele. Ele precisa ler e aprovar.
+6. **Mentoria e aulas de preto e cinza**: seguem abertas? Tem valor ou página própria?
+7. **Além da tattoo**: gravura no vidro, móveis e artes disponíveis estão à venda de verdade?
+8. Logo: ele não tem logo além do nome. O monograma "FF" do favicon foi feito para o site.
+9. Domínio e remoção do `noindex` quando for ao ar.
