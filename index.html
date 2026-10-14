@@ -20,8 +20,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wdth,wght@0,5..1200,87.5..112.5,300..900;1,5..1200,87.5..112.5,300..900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/css/revista.css">
-<link rel="preload" as="image" href="assets/img/hero-largo-1400.webp" media="(min-width: 761px)">
-<link rel="preload" as="image" href="assets/img/capa-leao-720.webp" media="(max-width: 760px)">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -76,18 +74,7 @@
 
 <!-- HERO -->
 <section class="hero" id="inicio">
-  <div class="hero-foto base" aria-hidden="true">
-    <picture>
-      <source media="(max-width: 760px)" srcset="assets/img/capa-leao-720.webp 720w, assets/img/capa-leao-1400.webp 1400w" sizes="100vw">
-      <img src="assets/img/hero-largo-1400.webp" srcset="assets/img/hero-largo-900.webp 900w, assets/img/hero-largo-1400.webp 1351w" sizes="100vw" alt="" width="1351" height="760" fetchpriority="high">
-    </picture>
-  </div>
-  <div class="hero-foto lente" id="lente">
-    <picture>
-      <source media="(max-width: 760px)" srcset="assets/img/capa-leao-720.webp 720w, assets/img/capa-leao-1400.webp 1400w" sizes="100vw">
-      <img src="assets/img/hero-largo-1400.webp" srcset="assets/img/hero-largo-900.webp 900w, assets/img/hero-largo-1400.webp 1351w" sizes="100vw" alt="Fechamento de costas em preto e cinza com o rosto de Jesus e um leão, feito por Fernando Fernandes" width="1351" height="760">
-    </picture>
-  </div>
+  <canvas class="hero-tinta" id="tinta" aria-hidden="true"></canvas>
 
   <div class="hero-topo rotulo">
     <div class="wrap"><span>Tatuador premiado</span><span class="some">Preto e cinza · Blackwork · Realismo</span><span>São Paulo</span></div>
@@ -117,7 +104,7 @@
       <div class="surge">
         <p class="rotulo vermelho">Sobre</p>
         <h2 class="display">Traço marcado, contraste pesado</h2>
-        <p>Fernando Fernandes tatua há mais de dez anos e passou por estúdios conceituados de São Paulo. É especializado em preto e cinza e blackwork, e também faz fineline, escrita, old school e geometria.</p>
+        <p>Fernando Fernandes tatua há mais de dez anos. É especializado em preto e cinza e blackwork, e também faz fineline, escrita, old school, geometria e realismo.</p>
         <p>Cada projeto é desenhado para acompanhar a anatomia do corpo e funcionar de longe e de perto, com foco em técnica, durabilidade e no conforto de quem está na maca. Muita coisa nasce no freehand, desenhada direto na pele.</p>
         <p>Atende com hora marcada no Bom Retiro. Orçamentos pelo direct ou pelo WhatsApp.</p>
         <a class="btn escuro" href="#portfolio" style="margin-top: 10px;">Ver trabalhos</a>
@@ -231,7 +218,7 @@
     <div class="servicos">
       <div class="surge"><h3>Projetos autorais</h3><p>Realismo, religioso, retrato, animais, ornamental e escrita. Você traz a ideia e o desenho é feito para o seu corpo.</p></div>
       <div class="surge"><h3>Coberturas e reformas</h3><p>Primeiro o preto puro para neutralizar a tattoo antiga, depois os cinzas e brancos para sumir com os fantasmas.</p></div>
-      <div class="surge"><h3>Mentoria e aulas</h3><p>Mentoria particular para tatuadores, com prática de sombra lisa e textura, e turmas de preto e cinza.</p></div>
+      <div class="surge"><h3>Fineline e escrita</h3><p>Frases, nomes, homenagens e florais delicados, com traço fino e escrita feita sob medida.</p></div>
     </div>
   </div>
 </section>
@@ -268,17 +255,11 @@
       </article>
       <article class="card surge">
         <span class="tipo">Artes disponíveis</span>
-        <img src="assets/obras/o052-640.webp" alt="Máscara Hannya tatuada nas costas" loading="lazy" width="640" height="800">
+        <img src="assets/img/arte-disponivel-640.webp" alt="Desenho disponível de anjo em preto e cinza para fechamento de braço" loading="lazy" width="640" height="800">
         <h3>Flashes e projetos</h3>
         <p>Desenhos prontos para braço, perna e costas, com condição especial.</p>
         <a class="contato" href="https://wa.me/5511911618013?text=Ol%C3%A1%2C%20Fernando!%20Quero%20ver%20as%20artes%20dispon%C3%ADveis." target="_blank" rel="noopener">Ver as artes →</a>
       </article>
-    </div>
-
-    <div class="imprensa surge">
-      <span class="veiculo">g1</span>
-      <p>O g1 contou a história do pedido de casamento que Fernando tatuou no peito de um jovem que venceu o câncer, no lugar onde antes ficava o cateter.</p>
-      <a class="btn escuro" href="https://g1.globo.com/sp/santos-regiao/noticia/2023/03/13/tatuador-revela-surpresa-ao-desenhar-pedido-de-casamento-no-peito-de-jovem-que-venceu-cancer-inusitado.ghtml" target="_blank" rel="noopener">Ler a matéria</a>
     </div>
   </div>
 </section>

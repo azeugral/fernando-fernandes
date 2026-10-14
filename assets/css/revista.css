@@ -99,15 +99,13 @@ h3 { font-family: var(--serifa); font-variation-settings: 'wdth' 87.5, 'opsz' 20
 
 /* ===== hero ===== */
 .hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: var(--tinta); isolation: isolate; }
-.hero-foto { position: absolute; inset: 0; z-index: -2; }
-.hero-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-.hero-foto.base img { filter: grayscale(1) brightness(.5) contrast(1.12); transform: scale(1.04); }
-.hero-foto.lente { z-index: -1; --x: 50%; --y: 40%; --r: 230px;
-  -webkit-mask-image: radial-gradient(circle var(--r) at var(--x) var(--y), #000 0%, #000 35%, transparent 100%);
-  mask-image: radial-gradient(circle var(--r) at var(--x) var(--y), #000 0%, #000 35%, transparent 100%);
-}
-.hero-foto.lente img { filter: grayscale(.15) brightness(1.08) contrast(1.08); transform: scale(1.04); }
-.hero::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(to bottom, rgba(13,12,11,.75) 0%, rgba(13,12,11,0) 22%, rgba(13,12,11,0) 45%, rgba(13,12,11,.92) 82%, var(--tinta) 100%); }
+.hero { background:
+    radial-gradient(60% 50% at 30% 35%, #2a2723 0%, transparent 70%),
+    radial-gradient(50% 45% at 72% 60%, #24211e 0%, transparent 70%),
+    var(--tinta); }
+.hero-tinta { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity 1.2s var(--ease); }
+.hero-tinta.pronto { opacity: 1; }
+.hero::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(to bottom, rgba(13,12,11,.6) 0%, rgba(13,12,11,0) 20%, rgba(13,12,11,0) 50%, rgba(13,12,11,.85) 85%, var(--tinta) 100%); }
 .hero-topo { position: absolute; top: 84px; left: 0; right: 0; }
 .hero-topo .wrap { display: flex; justify-content: space-between; gap: 16px; max-width: none; color: var(--grafite-claro); }
 .hero-corpo { padding: 0 var(--gutter) clamp(22px, 4vh, 40px); }
@@ -122,7 +120,6 @@ h3 { font-family: var(--serifa); font-variation-settings: 'wdth' 87.5, 'opsz' 20
 @media (max-width: 760px) {
   .hero h1 { white-space: normal; font-size: 18vw; line-height: .84; }
   .hero h1 span { display: block; }
-  .hero-foto img { object-position: 50% 35%; }
   .hero-topo .some { display: none; }
   .hero-info { grid-template-columns: 1fr 1fr; }
   .hero-info > div:first-child { grid-column: 1 / -1; border-bottom: 1px solid rgba(236,230,218,.25); padding-bottom: 14px; }
