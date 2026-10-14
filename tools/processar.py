@@ -55,10 +55,8 @@ PORTFOLIO = [
     (69, 'fine', 'Floral nas costas'),
     (29, 'fine', 'Rosa e serpente'),
     (11, 'fine', 'Floralzinho'),
-    (63, 'fine', 'Floral delicado'),
     (76, 'fine', 'Borboleta'),
     (87, 'fine', 'Pai Nosso em árabe'),
-    (60, 'black', 'Caveira e rosa'),
     (59, 'black', 'Aranha'),
     (71, 'real', 'Soldado'),
     (74, 'fech', 'Samurai, segunda sessão'),
@@ -81,16 +79,12 @@ PORTFOLIO = [
     (137, 'real', 'Leão blackwork'),
     (138, 'real', 'Leão'),
     (136, 'real', 'Mulher e serpente'),
-    (135, 'real', 'Retrato com ornamento'),
     (145, 'fech', 'Costas no freehand, primeira sessão'),
     (153, 'black', 'Geométrico unificando o braço'),
     (154, 'fech', 'Foo dog cicatrizado'),
     (160, 'real', 'Mileena, Mortal Kombat'),
-    (161, 'real', 'Arte dos arquivos'),
     (163, 'fech', 'Coliseu Expo Tattoo: 9 horas de sessão'),
     (119, 'fine', 'Enjoy the Silence'),
-    (114, 'fine', 'Fineline'),
-    (166, 'black', 'Cicatrizado'),
 ]
 
 # fotos de apoio: nome -> (id, recorte relativo ou None, larguras, p&b)

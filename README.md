@@ -2,13 +2,14 @@
 
 Site de apresentação do tatuador **Fernando Fernandes** (@fernandofernandestattoo), preto e cinza / blackwork, Bom Retiro, São Paulo.
 
-Conceito: o site é uma **revista**. Ele mesmo publica no Instagram uma capa de revista com o próprio nome ("Tattoo / Art / Culture", Vol. 12), então a identidade parte daí: masthead em Playfair condensada, papel e tinta, um vermelho de prova.
+Versão 2 (14/10/2026), redesenhada a partir de sites premiados de tatuadores (Rui Tattoo e Vitalina no Awwwards, Dr. Woo):
 
-- **Capa** com três edições trocáveis (Nº 12, 11 e 10), foto sobrepondo o nome como numa capa impressa.
-- **Sumário** com fólio de página, e um fólio corrente no canto da tela que acompanha a leitura.
-- **Matéria de capa** (3º lugar na Coliseu Expo Tattoo), **Portfólio** com filtros e tela cheia, **Entrevista**, **Guia da sessão longa** (texto do próprio post dele), **Serviços** em formato de anúncio, **Classificados** (vidro, móveis, sax), clipping do g1, **Cartas do leitor** (avaliações do Google) e **Cupom de orçamento** que vira mensagem no WhatsApp.
+- **Hero** em tela cheia com a foto do fechamento de costas (Jesus e o leão) em P&B escurecido, o nome gigante ajustado à largura e três informações em linha. Uma **lente** revela a tattoo nítida onde passa o mouse; no celular ela passeia sozinha.
+- **Portfólio** em grade rígida 4:5 (4, 3 ou 2 colunas), numerado, com filtros e tela cheia. São 72 obras, para a grade fechar certinha.
+- Seções: Sobre, Portfólio, Destaque (3º lugar na Coliseu Expo Tattoo), Processo + guia da sessão longa, Serviços, Além da tattoo, g1, Avaliações, Orçamento (vira mensagem no WhatsApp) e Contato.
+- Playfair condensada + IBM Plex Sans + JetBrains Mono; tinta, papel e vermelho de prova.
 
-Páginas: `index.html`, `portfolio.html` (78 obras), `404.html`.
+Páginas: `index.html`, `portfolio.html` (72 obras), `404.html`.
 
 ## Fontes do conteúdo
 
@@ -30,6 +31,5 @@ Páginas: `index.html`, `portfolio.html` (78 obras), `404.html`.
 6. **Foto "do outro lado"** (post do TBT premiando): confirmar que é ele na foto e qual evento foi.
 7. **Mentoria e aulas de preto e cinza**: seguem abertas? Tem valor ou página própria?
 8. **Classificados**: gravura no vidro, móveis e artes disponíveis estão à venda de verdade?
-9. **Edições da capa** (setembro e agosto): são fictícias, só para a troca de capa. Pode trocar as fotos e chamadas.
-10. Logo: ele não tem logo além do nome na capa. O monograma "FF" do favicon foi feito para o site.
-11. Domínio e remoção do `noindex` quando for ao ar.
+9. Logo: ele não tem logo além do nome na capa. O monograma "FF" do favicon foi feito para o site.
+10. Domínio e remoção do `noindex` quando for ao ar.
