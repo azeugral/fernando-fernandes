@@ -24,77 +24,60 @@
     addEventListener('resize', ajustarNome);
   }
 
-  /* fundo do hero: fumaça de tinta em preto e cinza (WebGL). O cursor ilumina e mexe a tinta;
-     no toque a luz passeia sozinha. Sem WebGL, fica o degradê do CSS. */
-  const hero = $('.hero'), tela = $('#tinta');
-  if (hero && tela) iniciarTinta();
+  /* fundo do hero: fumaça de tinta em preto e cinza, sem interação.
+     Desktop: WebGL ao vivo (tinta.js). Celular: MP4 renderizado do mesmo shader. */
+  const hero = $('.hero'), tela = $('#tinta'), video = $('#tinta-video');
+  const celular = matchMedia('(max-width: 760px), (hover: none) and (pointer: coarse)');
+  const deitado = matchMedia('(orientation: landscape)');
+  let glAtivo = false, videoAtivo = false;
+  function escolherFundo() {
+    if (celular.matches) { if (!videoAtivo) iniciarVideo(); }
+    else if (!glAtivo) iniciarTinta();
+  }
+  function iniciarVideo() {
+    if (!video) return;
+    videoAtivo = true;
+    video.muted = true;
+    video.preload = 'auto';
+    trocarVideo();
+    deitado.addEventListener ? deitado.addEventListener('change', trocarVideo) : deitado.addListener(trocarVideo);
+  }
+  function trocarVideo() {
+    const src = deitado.matches ? video.dataset.deitado : video.dataset.emPe;
+    if (video.getAttribute('src') !== src) {
+      const t = video.currentTime || 0;
+      video.src = src;
+      video.addEventListener('loadedmetadata', () => { try { video.currentTime = t % (video.duration || 12); } catch (e) {} }, { once: true });
+    }
+    const p = video.play();
+    if (p && p.catch) p.catch(() => {});
+  }
   function iniciarTinta() {
-    const gl = tela.getContext('webgl', { antialias: false, premultipliedAlpha: false, powerPreference: 'low-power' });
-    if (!gl) return;
-    const vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
-    const fs = `precision mediump float;
-uniform vec2 r;uniform float t;uniform vec2 m;uniform float mi;
-float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
-return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
-float fbm(vec2 p){float v=0.,a=.5;mat2 R=mat2(.8,.6,-.6,.8);for(int i=0;i<5;i++){v+=a*n(p);p=R*p*2.02;a*=.5;}return v;}
-void main(){
-  vec2 uv=gl_FragCoord.xy/r.y; vec2 mp=m/r.y;
-  float d=length(uv-mp); float luz=mi*smoothstep(.62,0.,d);
-  vec2 w=uv*1.35+(uv-mp)*luz*.18;
-  vec2 q=vec2(fbm(w+t*.035),fbm(w+vec2(5.2,1.3)-t*.028));
-  vec2 s=vec2(fbm(w+3.*q+vec2(1.7,9.2)+t*.045),fbm(w+3.*q+vec2(8.3,2.8)-t*.02));
-  float f=fbm(w+3.4*s);
-  float v=smoothstep(.18,1.05,f*f*1.7+.22*length(q));
-  float veia=smoothstep(.035,0.,abs(fbm(uv*2.6+s*2.2)-.5));
-  v=v*(.5+.95*luz)+veia*(.1+.32*luz)+luz*.05;
-  vec3 col=mix(vec3(.051,.047,.043),vec3(.82,.79,.74),clamp(v*.68,0.,1.));
-  vec2 c=gl_FragCoord.xy/r-.5; col*=1.-.42*dot(c*vec2(1.,.85),c*vec2(1.,.85))*2.;
-  gl_FragColor=vec4(col,1.);
-}`;
-    const sh = (tipo, src) => { const o = gl.createShader(tipo); gl.shaderSource(o, src); gl.compileShader(o); return gl.getShaderParameter(o, gl.COMPILE_STATUS) ? o : null; };
-    const v = sh(gl.VERTEX_SHADER, vs), f = sh(gl.FRAGMENT_SHADER, fs);
-    if (!v || !f) return;
-    const pr = gl.createProgram(); gl.attachShader(pr, v); gl.attachShader(pr, f); gl.linkProgram(pr);
-    if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return;
-    gl.useProgram(pr);
-    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-    const lp = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(lp); gl.vertexAttribPointer(lp, 2, gl.FLOAT, false, 0, 0);
-    const U = k => gl.getUniformLocation(pr, k);
-    const uR = U('r'), uT = U('t'), uM = U('m'), uMi = U('mi');
-    const escala = innerWidth < 760 ? .5 : .6;
+    if (!hero || !tela || !window.tintaGL) return;
+    const t = window.tintaGL(tela);
+    if (!t) return;
+    glAtivo = true;
+    const PERIODO = 20, RAIO = .35;
     function medir() {
-      const w = Math.max(1, Math.round(tela.clientWidth * escala)), h = Math.max(1, Math.round(tela.clientHeight * escala));
-      if (tela.width !== w || tela.height !== h) { tela.width = w; tela.height = h; gl.viewport(0, 0, w, h); }
+      const w = Math.max(1, Math.round(tela.clientWidth * .6)), h = Math.max(1, Math.round(tela.clientHeight * .6));
+      if (tela.width !== w || tela.height !== h) { tela.width = w; tela.height = h; }
     }
     medir(); addEventListener('resize', medir);
-    const toque = matchMedia('(hover: none)').matches;
-    let ax = .5, ay = .55, x = .5, y = .55, mi = 0, alvoMi = 1, ativo = false, visivel = true;
-    hero.addEventListener('pointermove', e => {
-      if (e.pointerType !== 'mouse') return;
-      const r = hero.getBoundingClientRect();
-      ax = (e.clientX - r.left) / r.width; ay = 1 - (e.clientY - r.top) / r.height; ativo = true;
-    });
-    hero.addEventListener('pointerleave', () => { ativo = false; });
+    let visivel = true;
     new IntersectionObserver(([e]) => { visivel = e.isIntersecting; }).observe(hero);
     const t0 = performance.now();
     function quadro(agora) {
-      if (visivel) {
-        const s = (agora - t0) / 1000;
-        if (!ativo) { ax = .5 + Math.sin(s * .23) * (toque ? .22 : .28); ay = .58 + Math.sin(s * .17 + 1) * .14; }
-        x += (ax - x) * .06; y += (ay - y) * .06; mi += (alvoMi - mi) * .03;
-        gl.uniform2f(uR, tela.width, tela.height);
-        gl.uniform1f(uT, reduz ? 4 : s);
-        gl.uniform2f(uM, x * tela.width, y * tela.height);
-        gl.uniform1f(uMi, reduz ? 1 : mi);
-        gl.drawArrays(gl.TRIANGLES, 0, 3);
+      if (visivel && !celular.matches) {
+        medir();
+        t.desenhar(reduz ? 1 : ((agora - t0) / 1000 / PERIODO) * Math.PI * 2, RAIO);
         tela.classList.add('pronto');
       }
       if (!reduz) requestAnimationFrame(quadro);
     }
     requestAnimationFrame(quadro);
   }
+  escolherFundo();
+  celular.addEventListener ? celular.addEventListener('change', escolherFundo) : celular.addListener(escolherFundo);
 
   /* topo sólido + WhatsApp flutuante */
   const topo = $('#topo'), zap = $('.zap');

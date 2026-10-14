@@ -4,7 +4,7 @@ Site de apresentação do tatuador **Fernando Fernandes** (@fernandofernandestat
 
 Versão 2 (14/10/2026), redesenhada a partir de sites premiados de tatuadores (Rui Tattoo e Vitalina no Awwwards, Dr. Woo):
 
-- **Hero** em tela cheia sem foto: uma fumaça de tinta em preto e cinza gerada em WebGL (nítida em qualquer tela), que o cursor ilumina e mexe; no celular a luz passeia sozinha. Sem WebGL fica um degradê. Por cima, o nome gigante ajustado à largura e três informações em linha.
+- **Hero** em tela cheia sem foto: uma fumaça de tinta em preto e cinza, sem interação com o mouse. No desktop ela é gerada em WebGL (`assets/js/tinta.js`). Em celular e tablet (tela até 760 px ou toque) toca um MP4 em loop renderizado do mesmo shader: `tinta-celular.mp4` em pé (540×1170) e `tinta-deitado.mp4` deitado (1280×590), 12 s, 0,7–0,8 MB cada. Sem WebGL nem vídeo, fica o pôster ou um degradê. Por cima, o nome gigante ajustado à largura e três informações em linha.
 - **Portfólio** em grade rígida 4:5 (4, 3 ou 2 colunas), numerado, com filtros e tela cheia. São 72 obras, para a grade fechar certinha.
 - Seções: Sobre, Portfólio, Destaque (3º lugar na Coliseu Expo Tattoo), Processo + guia da sessão longa, Serviços, Além da tattoo, Avaliações, Orçamento (vira mensagem no WhatsApp) e Contato.
 - Playfair condensada + IBM Plex Sans + JetBrains Mono; tinta, papel e vermelho de prova.
@@ -19,6 +19,8 @@ Páginas: `index.html`, `portfolio.html` (72 obras), `404.html`.
 Tudo no site vem do Instagram dele (bio e legendas) ou da ficha do Google, que tem o mesmo telefone do Instagram. Foram retirados por não serem dele: a matéria do g1 (outro Fernando Fernandes, de Praia Grande), a "mentoria" (no post ele era o aluno) e "passou por estúdios conceituados" (texto da irmã).
 
 ## Ferramentas
+
+- `tools/gerar_video.py` renderiza os MP4 do celular e o pôster a partir de `tinta.js` (Playwright + Brave + ffmpeg do imageio-ffmpeg). Rodar de novo se mexer no shader.
 
 - `tools/processar.py` gera `assets/obras`, `assets/js/obras.js`, `assets/img`, favicons e `og.jpg` a partir de `../_ref/ig` (fora do repositório). Para trocar o portfólio, edite a lista `PORTFOLIO` e rode `python tools/processar.py`.
 
