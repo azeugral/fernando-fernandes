@@ -18,9 +18,9 @@ void main(){
   float f=fbm(w+3.4*s);
   float v=smoothstep(.18,1.05,f*f*1.7+.22*length(q));
   float veia=smoothstep(.035,0.,abs(fbm(uv*2.6+s*2.2)-.5));
-  v=v*(.5+.95*luz)+veia*(.1+.32*luz)+luz*.05;
-  vec3 col=mix(vec3(.051,.047,.043),vec3(.82,.79,.74),clamp(v*.68,0.,1.));
-  vec2 c=gl_FragCoord.xy/r-.5; col*=1.-.42*dot(c*vec2(1.,.85),c*vec2(1.,.85))*2.;
+  v=v*(.42+.5*luz)+veia*(.06+.16*luz)+luz*.02;
+  vec3 col=mix(vec3(.035,.033,.031),vec3(.74,.71,.66),clamp(v*.44,0.,1.));
+  vec2 c=gl_FragCoord.xy/r-.5; col*=1.-.55*dot(c*vec2(1.,.85),c*vec2(1.,.85))*2.;
   gl_FragColor=vec4(col,1.);
 }`;
 

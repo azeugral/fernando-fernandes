@@ -1,6 +1,6 @@
 # Fernando Fernandes · Tatuador premiado
 
-Site de apresentação do tatuador **Fernando Fernandes** (@fernandofernandestattoo), preto e cinza / blackwork, Bom Retiro, São Paulo.
+Site de apresentação do tatuador **Fernando Fernandes** (@fernandofernandestattoo), preto e cinza / blackwork. Estúdio na Avenida Nossa Senhora do Ó, 865, Limão, São Paulo (CEP 02715-000).
 
 Versão 2 (14/10/2026), redesenhada a partir de sites premiados de tatuadores (Rui Tattoo e Vitalina no Awwwards, Dr. Woo):
 
@@ -14,7 +14,7 @@ Páginas: `index.html`, `portfolio.html` (72 obras), `404.html`.
 ## Fontes do conteúdo
 
 - Instagram, 168 posts mais recentes (14/10/2026): bio, legendas e fotos.
-- Perfil do Google: endereço, telefone, nota 5,0 com 21 avaliações, descrição.
+- Perfil do Google: telefone, nota 5,0 com 21 avaliações, descrição. O endereço antigo da ficha (Rua Solon, 191, Bom Retiro) foi trocado em 16/10/2026 pelo novo, informado pelo próprio cliente: Avenida Nossa Senhora do Ó, 865. Bairro e CEP vêm do Correios (ViaCEP).
 
 Tudo no site vem do Instagram dele (bio e legendas) ou da ficha do Google, que tem o mesmo telefone do Instagram. Foram retirados por não serem dele: a matéria do g1 (outro Fernando Fernandes, de Praia Grande), a "mentoria" (no post ele era o aluno) e "passou por estúdios conceituados" (texto da irmã).
 
@@ -26,7 +26,7 @@ Tudo no site vem do Instagram dele (bio e legendas) ou da ficha do Google, que t
 
 ## CONFIRMAR antes do domínio
 
-1. **Estúdio**: o Google mostra Rua Solon, 191, Bom Retiro. O nome do estúdio é Sutura Ink (@sutura.ink)? Uma legenda cita "Bom Retiro / Carapicuíba": atende nos dois lugares?
+1. **Estúdio**: o endereço novo é a Av. Nossa Senhora do Ó, 865 (Limão). O estúdio tem nome próprio? Atende em mais algum lugar? A ficha do Google ainda mostra a Rua Solon e precisa ser atualizada por ele.
 2. **Horário de atendimento**: o site diz só "com hora marcada".
 3. **Fechamento de braço em uma sessão por R$ 1.300**: veio de um post. Continua valendo? (Antes houve uma campanha de R$ 999.)
 4. **Textos do Sobre e do Processo**: foram montados a partir das legendas e da descrição do Google. Ele precisa ler e aprovar.

@@ -164,7 +164,7 @@ def main():
     d.text((60, 150), 'FERNANDO', font=f1, fill=(236, 230, 218))
     d.text((60, 245), 'FERNANDES', font=f1, fill=(236, 230, 218))
     d.text((62, 370), 'TATUADOR PREMIADO · PRETO E CINZA', font=f2, fill=(200, 60, 40))
-    d.text((62, 412), 'Bom Retiro, São Paulo', font=f2, fill=(170, 165, 155))
+    d.text((62, 412), 'Limão, São Paulo', font=f2, fill=(170, 165, 155))
     og.save(os.path.join(SITE, 'og.jpg'), quality=86)
     print(len(dados), 'obras')
 
