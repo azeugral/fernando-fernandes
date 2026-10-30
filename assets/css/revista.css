@@ -208,14 +208,16 @@ figcaption { font: 400 .74rem/1.5 var(--mono); letter-spacing: .04em; color: var
 .guia h3 { font-size: clamp(2rem, 4vw, 3.2rem); text-transform: uppercase; line-height: 1; }
 .guia > div > p { color: var(--grafite-claro); }
 .dicas { border-top: 3px solid var(--papel); }
-.dicas details { border-bottom: 1px solid var(--linha); }
+.dicas details { border-bottom: 1px solid var(--linha); overflow: hidden; }
 .dicas summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 44px 1fr 24px; align-items: center; gap: 12px; padding: 18px 0; font-family: var(--serifa); font-variation-settings: 'wdth' 87.5, 'opsz' 200; font-weight: 600; font-size: 1.3rem; line-height: 1.2; }
 .dicas summary::-webkit-details-marker { display: none; }
 .dicas summary .n { font: 500 .74rem/1 var(--mono); color: var(--vermelho); letter-spacing: .1em; }
 .dicas summary .mais { position: relative; width: 14px; height: 14px; justify-self: end; }
-.dicas summary .mais::before, .dicas summary .mais::after { content: ''; position: absolute; left: 0; top: 6px; width: 14px; height: 1.5px; background: currentColor; transition: transform var(--t) var(--ease); }
+.dicas summary .mais::before, .dicas summary .mais::after { content: ''; position: absolute; left: 0; top: 6px; width: 14px; height: 1.5px; background: currentColor; transition: transform .5s var(--ease); }
+.dicas summary { transition: color var(--t) var(--ease); }
+.dicas summary:hover { color: #fff; }
 .dicas summary .mais::after { transform: rotate(90deg); }
-.dicas details[open] .mais::after { transform: rotate(0); }
+.dicas details[open]:not(.fechando) .mais::after { transform: rotate(0); }
 .dicas details p { margin: 0 0 20px 56px; color: var(--grafite-claro); max-width: 560px; }
 
 /* serviços */

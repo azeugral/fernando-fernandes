@@ -200,6 +200,33 @@
     });
   }
 
+  /* dicas da sessão longa: abre e fecha com a altura animada, em vez do salto do <details> */
+  $$('.dicas details').forEach(d => {
+    const s = $('summary', d), p = $('p', d);
+    let anim = null;
+    const curva = 'cubic-bezier(.16,.84,.32,1)';
+    s.addEventListener('click', e => {
+      if (reduz || !d.animate) return;
+      e.preventDefault();
+      const de = d.offsetHeight;
+      if (anim) anim.cancel();
+      if (!d.open || d.classList.contains('fechando')) {
+        d.classList.remove('fechando');
+        d.open = true;
+        const ate = d.offsetHeight;
+        anim = d.animate({ height: [de + 'px', ate + 'px'] }, { duration: 520, easing: curva });
+        p.animate({ opacity: [0, 1], transform: ['translateY(-6px)', 'none'] }, { duration: 420, delay: 80, easing: curva, fill: 'backwards' });
+        anim.onfinish = () => { anim = null; };
+      } else {
+        d.classList.add('fechando');
+        const ate = s.offsetHeight;
+        anim = d.animate({ height: [de + 'px', ate + 'px'] }, { duration: 420, easing: curva });
+        p.animate({ opacity: [1, 0] }, { duration: 220, easing: 'ease-out', fill: 'forwards' }).onfinish = function () { this.cancel(); };
+        anim.onfinish = () => { d.open = false; d.classList.remove('fechando'); anim = null; };
+      }
+    });
+  });
+
   /* fotos que se alternam num card (gravura no vidro) */
   $$('.roda').forEach(r => {
     const imgs = $$('img', r);
