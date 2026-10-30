@@ -89,25 +89,15 @@ PORTFOLIO = [
 
 # fotos de apoio: nome -> (id, recorte relativo ou None, larguras, p&b)
 APOIO = {
-    'capa-leao': (2, None, (720, 1400), False),
-    'capa-hannya': (52, (0.08, 0, 0.92, 1), (720, 1400), False),
-    'capa-onca': (4, None, (720, 1400), False),
     'fer-maquina': (131, None, (720, 1200), True),
-    'fer-estudio': (128, (0, .12, 1, .92), (640, 1000), False),
-    'fer-mesa': (165, None, (640, 1000), False),
-    'fer-chapeu': (117, None, (640, 1000), True),
-    'fer-guitarra': (100, None, (640, 1000), False),
-    'fer-sax': (8, None, (640, 1000), True),
-    'fer-retrato': (64, None, (640, 1000), False),
     'premio': (151, None, (640, 1000), False),
-    'premiando': (37, None, (640, 1000), True),
-    'mesa-vidro': (127, None, (640, 1000), False),
-    'arte-vidro': (108, (0, .38, 1, 1), (640, 1000), False),
-    'estudio': (106, None, (640, 1000), False),
-    'estudio-luz': (121, None, (640, 1000), True),
-    'anti-heroi': (141, None, (480, 800), False),
+    'mesa-vidro': (127, None, (640,), False),
+    'fer-sax': (8, None, (640,), True),
     'arte-disponivel': (158, None, (640,), False),
 }
+
+# espelho gravado (post DLQCZGsMztN, em ../_ref/vidro): recorte 4:5 centralizado
+VIDRO = os.path.join(os.path.dirname(SITE), '_ref', 'vidro')
 
 
 def abrir(i):
@@ -138,6 +128,13 @@ def main():
         dados.append({'f': nome, 'c': cat, 't': leg, 'r': round(im.width / im.height, 3)})
     with open(os.path.join(SITE, 'assets', 'js', 'obras.js'), 'w', encoding='utf8') as f:
         f.write('window.OBRAS=' + json.dumps(dados, ensure_ascii=False, separators=(',', ':')) + ';\n')
+
+    for k in (1, 2, 3):
+        im = Image.open(os.path.join(VIDRO, f'vidro-{k}.jpg')).convert('RGB')
+        W, H = im.size; w = round(H * 4 / 5); x = (W - w) // 2
+        im = im.crop((x, 0, x + w, H))
+        for L in (640, 1000):
+            im.resize((L, round(L * 5 / 4)), Image.LANCZOS).save(os.path.join(IMG, f'vidro-{k}-{L}.webp'), 'WEBP', quality=82, method=6)
 
     for nome, (i, r, larg, pb) in APOIO.items():
         im = recortar(abrir(i), r)

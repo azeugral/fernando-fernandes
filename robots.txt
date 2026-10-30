@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://azeugral.github.io/fernando-fernandes/sitemap.xml

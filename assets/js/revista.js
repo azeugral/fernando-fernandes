@@ -127,12 +127,11 @@
   const galeria = $('#galeria');
   const obras = window.OBRAS || [];
   let visiveis = [];
-  const num = i => String(i + 1).padStart(2, '0');
   if (galeria && obras.length) {
     const limite = +galeria.dataset.limite || Infinity;
     galeria.innerHTML = obras.map((o, i) => `<button class="obra" type="button" data-c="${o.c}" data-i="${i}" aria-label="Ampliar: ${o.t}">
       <span class="moldura"><img src="assets/obras/${o.f}-640.webp" alt="${o.t}" loading="lazy" decoding="async" width="640" height="800"></span>
-      <span class="leg"><b>${num(i)}</b><span>${o.t}</span></span></button>`).join('');
+      <span class="leg"><span>${o.t}</span></span></button>`).join('');
     const filtros = $('.filtros');
     const conta = c => c === 'todos' ? obras.length : obras.filter(o => o.c === c).length;
     filtros.innerHTML = Object.entries(CATS).map(([k, v], i) =>
@@ -163,7 +162,7 @@
     const tmp = new Image(); tmp.src = src;
     const mostrar = () => { luzImg.src = src; luzImg.alt = o.t; luzImg.style.opacity = 1; };
     tmp.decode ? tmp.decode().then(mostrar, mostrar) : mostrar();
-    luzLeg.innerHTML = `<b>${num(i)}</b>${o.t}`;
+    luzLeg.textContent = o.t;
     luzCont.textContent = `${li + 1} / ${visiveis.length}`;
   }
   function abrirLuz(i) {
@@ -200,6 +199,18 @@
       x0 = null;
     });
   }
+
+  /* fotos que se alternam num card (gravura no vidro) */
+  $$('.roda').forEach(r => {
+    const imgs = $$('img', r);
+    if (imgs.length < 2 || reduz) return;
+    let k = 0;
+    r.classList.add('ligada'); imgs[0].classList.add('ativa');
+    setInterval(() => {
+      if (document.hidden) return;
+      imgs[k].classList.remove('ativa'); k = (k + 1) % imgs.length; imgs[k].classList.add('ativa');
+    }, 3200);
+  });
 
   /* orçamento -> WhatsApp */
   const form = $('#form-cupom');
